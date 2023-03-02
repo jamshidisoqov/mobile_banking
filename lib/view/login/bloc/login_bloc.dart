@@ -14,6 +14,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   LoginBloc(this.authApi) : super(LoginState()) {
     on<LoginClick>(
       (event, emit) async {
+        print("Keldi");
         try {
           if (await hasConnection()) {
             emit(state.copyWith(stateEnum: LoginStateEnum.loading));
@@ -36,9 +37,11 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
                   stateEnum: LoginStateEnum.error, error: p0.toString()));
             });
           } else {
+            print("no internet");
             emit(state.copyWith(stateEnum: LoginStateEnum.noInternet));
           }
         } catch (e) {
+          print("error");
           emit(state.copyWith(
               stateEnum: LoginStateEnum.error, error: e.toString()));
         }

@@ -1,12 +1,7 @@
-import 'dart:io';
+import 'package:connectivity_plus/connectivity_plus.dart';
 
 Future<bool> hasConnection() async {
-  bool connection;
-  try {
-    var result = await InternetAddress.lookup("https://www.google.com/");
-    connection = result.isNotEmpty && result[0].rawAddress.isNotEmpty;
-  } catch (e) {
-    connection = false;
-  }
-  return connection;
+  final connectivityResult = await (Connectivity().checkConnectivity());
+  return connectivityResult == ConnectivityResult.mobile ||
+      connectivityResult == ConnectivityResult.wifi;
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_banking/di/database_module.dart';
 import 'package:mobile_banking/view/register/verify/register_verify_screen.dart';
+import 'package:mobile_banking/view/splash/splash_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,7 +15,7 @@ void main() async {
         focusColor: Colors.blue,
         disabledColor: Colors.grey,
       ),
-      home: const RegisterVerifyScreen(),
+      home: const SplashScreen().page,
     ),
   );
 }

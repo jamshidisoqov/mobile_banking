@@ -46,7 +46,7 @@ class LoginScreen extends StatelessWidget {
             inputState = BaseTextFieldState.enabled;
             break;
           case LoginStateEnum.initial:
-            buttonState = ProgressButtonState.calm;
+            buttonState = ProgressButtonState.enabled;
             break;
           case LoginStateEnum.success:
             buttonState = ProgressButtonState.enabled;
@@ -165,10 +165,11 @@ class LoginScreen extends StatelessWidget {
                     state: buttonState,
                     buttonText: "Login",
                     callback: () {
+                      print("tab");
                       context.read<LoginBloc>().add(
                             LoginClick(
                               controller.text,
-                              passwordController.text,
+                              "+998${passwordController.text}",
                             ),
                           );
                     },
@@ -187,7 +188,7 @@ class LoginScreen extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => RegisterScreen(),
+                              builder: (context) => RegisterScreen().page,
                             ),
                           );
                         },
