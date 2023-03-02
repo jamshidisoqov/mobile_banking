@@ -1,0 +1,2 @@
+enum BaseWidgetState { enabled, disabled }
+
